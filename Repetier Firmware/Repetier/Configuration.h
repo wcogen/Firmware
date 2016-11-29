@@ -9,11 +9,11 @@ Rostock MAX v3 = 5
 Hacker Series H2 = 6
 */
 // ### Define your Printer Model here! ###
-#define PRINTER 5
+#define PRINTER 6
 
 // ### Define your motherboard here! ###
 // 301 = RAMBo    302 = MINI RAMBo
-#define MOTHERBOARD 301
+#define MOTHERBOARD 302
 
 // ##### Older Orions w/ATX had Y inverted and NEW PSU on orions needs opposite ###
 // 1 = ATX on older machines  2 = Rail style PSU on newer machines ############################
@@ -48,30 +48,19 @@ Hacker Series H2 = 6
 
 //  Microstepping mode of your stepper drivers
 #define MICROSTEP_MODES {16,16,16,16,16} // 1,2,4,8,16
+
+// ################## RAMBo Digipot Motor current control settings ################
+// Values 0-255 (RAMBO 135 = ~0.75A, 185 = ~1A)
+//################### Mini Rambo etc... motor current settings    #########
+//  Motor PWM current for mini rambo is X+Y on the same first value, Z on the next, then Extruder(s) on the last value
+// The MINI Rambo is used on all ERIS, DropLit v2 and newer Orions built after appx may 2016 and H2
+// Each printer definition has motor_current values to adjust
 #if MOTHERBOARD == 301  // RAMBo
 #define STEPPER_CURRENT_CONTROL CURRENT_CONTROL_DIGIPOT
 #elif MOTHERBOARD == 302  // Mini RAMBo
 #define STEPPER_CURRENT_CONTROL CURRENT_CONTROL_PWM
-#endif
-
-// ################## RAMBo Digipot Motor current control settings ################
-// Values 0-255 (RAMBO 135 = ~0.75A, 185 = ~1A)
-// use 140 for xyz and 130 for the E if using Kysan/AutomationTechnology motors and 175 xyz and 200 if using wantai motors
-#define MOTOR_CURRENT {140,140,140,130,0} 
-
-//################### Mini Rambo etc... motor current settings    #########
-//  Motor PWM current for mini rambo is X+Y on the same first value, Z on the next, then Extruder(s) on the last value
-// The MINI Rambo is used on all ERIS, DropLit v2 and newer Orions built after appx may 2016
 #define MOTOR_CURRENT_PWM_RANGE 2000
-//#define DEFAULT_PWM_MOTOR_CURRENT  {30, 30, 130}  // X+Y, Z, E+
-#if PRINTER == 1  // Orion Delta
-#define MOTOR_CURRENT_PWM {60, 60, 130}
-#elif PRINTER == 3  // ERIS Delta
-#define MOTOR_CURRENT_PWM {20, 20, 130}
-#elif PRINTER == 4  // DropLit v2
-#define MOTOR_CURRENT_PWM {0, 50, 0}  // No need for X/Y or E motor currents
 #endif
-
 
 // ################ END MANUAL SETTINGS ##########################
 
@@ -80,13 +69,15 @@ Hacker Series H2 = 6
 // If it is incompatible you will get compiler errors about write functions not beeing compatible!
 //#define COMPAT_PRE1
 
-//Printer Specific Settings
+// #################  Printer Specific Settings ##########
+
 #if PRINTER == 1  // Orion Delta
 #if POWER_SUPPLY == 2
 #define INVERT_Y_DIR 1
 #else
 #define INVERT_Y_DIR 0
 #endif
+#define MOTOR_CURRENT_PWM {60, 60, 130}
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 180
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 80
 #define EXT0_PID_PGAIN_OR_DEAD_TIME 14.50
@@ -151,6 +142,7 @@ Hacker Series H2 = 6
 #define HAVE_HEATED_BED 1
 
 #elif PRINTER == 2  // Rostock MAX v2
+#define MOTOR_CURRENT {140,140,140,130,0}
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 180
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 80
 #define EXT0_PID_PGAIN_OR_DEAD_TIME 14.50
@@ -215,6 +207,7 @@ Hacker Series H2 = 6
 #define HAVE_HEATED_BED 1
 
 #elif PRINTER == 3  // ERIS Delta
+#define MOTOR_CURRENT_PWM {20, 20, 130}
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 200
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 120
 #define EXT0_PID_PGAIN_OR_DEAD_TIME 25.0
@@ -281,6 +274,7 @@ Hacker Series H2 = 6
 #define FAN_BOARD_PIN 6  // ERIS Case Fan pin
 
 #elif PRINTER == 4  // DropLit v2 bogus values to compile fw
+#define MOTOR_CURRENT_PWM {0, 50, 0}
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 180
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 60
 #define EXT0_PID_PGAIN_OR_DEAD_TIME 22.0
@@ -345,6 +339,7 @@ Hacker Series H2 = 6
 #define HAVE_HEATED_BED 0
 
 #elif PRINTER == 5  // Rostock MAX v3
+#define MOTOR_CURRENT {140,140,140,130,0}
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 180
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 80
 #define EXT0_PID_PGAIN_OR_DEAD_TIME 14.50
@@ -410,7 +405,7 @@ Hacker Series H2 = 6
 #define HAVE_HEATED_BED 1
 
 #elif PRINTER == 6  // Hacker Series H2
-
+#define MOTOR_CURRENT_PWM {60, 60, 130}
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 180
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 80
 #define EXT0_PID_PGAIN_OR_DEAD_TIME 14.50
