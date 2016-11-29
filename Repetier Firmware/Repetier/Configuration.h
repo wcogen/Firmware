@@ -6,6 +6,7 @@ Rostock Max V2 = 2
 ERIS = 3
 DROPLIT = 4
 Rostock MAX v3 = 5
+Hacker Series H2 = 6
 */
 // ### Define your Printer Model here! ###
 #define PRINTER 5
@@ -408,6 +409,73 @@ Rostock MAX v3 = 5
 #define UI_PRINTER_NAME "RostockMAXv3"
 #define HAVE_HEATED_BED 1
 #endif
+
+#if PRINTER == 6  // Hacker Series H2
+
+#define EXT0_PID_INTEGRAL_DRIVE_MAX 180
+#define EXT0_PID_INTEGRAL_DRIVE_MIN 80
+#define EXT0_PID_PGAIN_OR_DEAD_TIME 14.50
+#define EXT0_PID_I 0.73
+#define EXT0_PID_D 53.41
+#define EXT0_PID_MAX 235
+#define MIN_EXTRUDER_TEMP 150  //  this is the minimum temperature that will allow the extruder to drive filament, lower and it will ignore extruder commands
+#define MAXTEMP 280            //  this is the max allowable temp the hotend can be set at, any higher will trigger safety's
+#define MIN_DEFECT_TEMPERATURE 18  // this is the min temp that will allow the hotend to start heating.  Below this it will show as defective to help identify bad thermistors
+#define MAX_DEFECT_TEMPERATURE 300 // this is the max temp that wthe printer will throw errors about defective thermistors
+#define INVERT_X_DIR 1
+#define INVERT_Y_DIR 1
+#define INVERT_Z_DIR 1
+#define DELTA_DIAGONAL_ROD 178.0  // ball cup arms
+#define DELTA_MAX_RADIUS 75.0
+#define PRINTER_RADIUS 155.0
+#define Z_MAX_LENGTH 340.0
+#define END_EFFECTOR_HORIZONTAL_OFFSET 30.22
+#define CARRIAGE_HORIZONTAL_OFFSET 26.5  // molded cheapskates
+#define DELTASEGMENTS_PER_PRINTLINE 22
+#define STEPPER_INACTIVE_TIME 600L
+#define MAX_INACTIVE_TIME 900L
+#define MAX_FEEDRATE_X 150
+#define MAX_FEEDRATE_Y 150
+#define MAX_FEEDRATE_Z 250
+#define HOMING_FEEDRATE_X 80
+#define HOMING_FEEDRATE_Y 80
+#define HOMING_FEEDRATE_Z 80
+#define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_X 1500
+#define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Y 1500
+#define MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Z 1500
+#define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_X 1900
+#define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Y 1900
+#define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Z 1900
+#define MAX_JERK 24
+#define MAX_ZJERK 24
+#define BAUDRATE 250000
+#define FEATURE_Z_PROBE 1
+#define Z_PROBE_SENSITIVITY  20 // 0-126 7 bit value
+#define Z_PROBE_BED_DISTANCE 20
+#define Z_PROBE_PULLUP 1 //0
+#define Z_PROBE_ON_HIGH 0 //1
+#define Z_PROBE_X_OFFSET 0
+#define Z_PROBE_Y_OFFSET 0
+#define Z_PROBE_WAIT_BEFORE_TEST 0
+#define Z_PROBE_SPEED 60
+#define Z_PROBE_XY_SPEED 60
+#define Z_PROBE_SWITCHING_DISTANCE 10
+#define Z_PROBE_REPETITIONS 1
+#define Z_PROBE_HEIGHT 0.0
+#define Z_PROBE_START_SCRIPT "G1Z50"
+#define Z_PROBE_FINISHED_SCRIPT ""
+#define FEATURE_AUTOLEVEL 1
+#define Z_PROBE_X1 -54.0
+#define Z_PROBE_Y1 -31.0
+#define Z_PROBE_X2 54.0
+#define Z_PROBE_Y2 -31.0
+#define Z_PROBE_X3 0
+#define Z_PROBE_Y3 65.0
+#define SDSUPPORT 1
+#define FEATURE_CONTROLLER 13
+#define UI_PRINTER_NAME "H2"
+#define HAVE_HEATED_BED 0
+
 
 #define MIXING_EXTRUDER 0
 #define DRIVE_SYSTEM 3
