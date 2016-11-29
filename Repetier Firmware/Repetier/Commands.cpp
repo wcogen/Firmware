@@ -1031,7 +1031,7 @@ void Commands::processGCode(GCode *com)
         }
         Com::printFLN(PSTR("Old Horizontal Radius: "), oldRadius );
         Com::printFLN(PSTR("New Horizontal Radius: "), Printer::radius0 );
-      }while(radiusLoop < 3 && (failedProbe || ((Printer::radius0 - oldRadius) > Z_PROBE_TOLERANCE) || ((Printer::radius0 - oldRadius) < -Z_PROBE_TOLERANCE) ));
+      }while(radiusLoop < 4 && (failedProbe || ((Printer::radius0 - oldRadius) > Z_PROBE_TOLERANCE) || ((Printer::radius0 - oldRadius) < -Z_PROBE_TOLERANCE) ));
 
       //Reset the max Z accel for the Eris
 #if PRINTER == 3
