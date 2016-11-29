@@ -868,6 +868,11 @@ void Commands::processGCode(GCode *com)
         }
         int32_t offsetX = ((xProbe * AXIS_STEPS_PER_MM) - (Z_PROBE_BED_DISTANCE * AXIS_STEPS_PER_MM)), offsetStepsX = EEPROM::deltaTowerXOffsetSteps();
 
+        if(com->hasS() && com->S == 2){
+          Printer::homeAxis(true,true,true);
+          GCode::executeFString(Com::tZProbeStartScript);
+          Printer::setAutolevelActive(false);
+        }
         Printer::moveTo(EEPROM::zProbeX2(),EEPROM::zProbeY2(),IGNORE_COORDINATE,IGNORE_COORDINATE,EEPROM::zProbeXYSpeed());
         yProbe = Printer::runZProbe(true,false,Z_PROBE_REPETITIONS,false); //First tap
         verify = Printer::runZProbe(true,false,Z_PROBE_REPETITIONS,false); //Second tap
@@ -888,6 +893,11 @@ void Commands::processGCode(GCode *com)
         }
         int32_t offsetY = ((yProbe * AXIS_STEPS_PER_MM) - (Z_PROBE_BED_DISTANCE * AXIS_STEPS_PER_MM)), offsetStepsY = EEPROM::deltaTowerYOffsetSteps();
 
+        if(com->hasS() && com->S == 2){
+          Printer::homeAxis(true,true,true);
+          GCode::executeFString(Com::tZProbeStartScript);
+          Printer::setAutolevelActive(false);
+        }
         Printer::moveTo(EEPROM::zProbeX3(),EEPROM::zProbeY3(),IGNORE_COORDINATE,IGNORE_COORDINATE,EEPROM::zProbeXYSpeed());
         zProbe = Printer::runZProbe(true,false,Z_PROBE_REPETITIONS,false); //First tap
         verify = Printer::runZProbe(true,false,Z_PROBE_REPETITIONS,false); //Second tap
