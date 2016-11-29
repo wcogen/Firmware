@@ -408,9 +408,8 @@ Hacker Series H2 = 6
 #define FEATURE_CONTROLLER 13
 #define UI_PRINTER_NAME "RostockMAXv3"
 #define HAVE_HEATED_BED 1
-#endif
 
-#if PRINTER == 6  // Hacker Series H2
+#elif PRINTER == 6  // Hacker Series H2
 
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 180
 #define EXT0_PID_INTEGRAL_DRIVE_MIN 80
@@ -475,7 +474,7 @@ Hacker Series H2 = 6
 #define FEATURE_CONTROLLER 13
 #define UI_PRINTER_NAME "H2"
 #define HAVE_HEATED_BED 0
-
+#endif
 
 #define MIXING_EXTRUDER 0
 #define DRIVE_SYSTEM 3
