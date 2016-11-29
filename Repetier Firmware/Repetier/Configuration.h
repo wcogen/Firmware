@@ -74,8 +74,6 @@ Rostock MAX v3 = 5
 
 // ################ END MANUAL SETTINGS ##########################
 
-#define FAN_BOARD_PIN 6  // ERIS Case Fan pin
-
 //#define EXTERNALSERIAL  use Arduino serial library instead of build in. Requires more ram, has only 63 byte input buffer.
 // Uncomment the following line if you are using arduino compatible firmware made for Arduino version earlier then 1.0
 // If it is incompatible you will get compiler errors about write functions not beeing compatible!
@@ -279,6 +277,7 @@ Rostock MAX v3 = 5
 #define FEATURE_CONTROLLER 0
 #define UI_PRINTER_NAME "ERIS Delta"
 #define HAVE_HEATED_BED 0
+#define FAN_BOARD_PIN 6  // ERIS Case Fan pin
 
 #elif PRINTER == 4  // DropLit v2 bogus values to compile fw
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 180
