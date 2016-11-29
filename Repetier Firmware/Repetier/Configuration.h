@@ -420,7 +420,7 @@ Hacker Series H2 = 6
 #define INVERT_Y_DIR 1
 #define INVERT_Z_DIR 1
 #define DELTA_DIAGONAL_ROD 178.0  // ball cup arms
-#define DELTA_MAX_RADIUS 75.0
+#define DELTA_MAX_RADIUS 60.0
 #define PRINTER_RADIUS 155.0
 #define Z_MAX_LENGTH 340.0
 #define END_EFFECTOR_HORIZONTAL_OFFSET 30.22
