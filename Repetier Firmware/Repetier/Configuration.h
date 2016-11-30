@@ -9,11 +9,11 @@ Rostock MAX v3 = 5
 Hacker Series H2 = 6
 */
 // ### Define your Printer Model here! ###
-#define PRINTER 5
+#define PRINTER 3
 
 // ### Define your motherboard here! ###
 // 301 = RAMBo    302 = MINI RAMBo
-#define MOTHERBOARD 301
+#define MOTHERBOARD 302
 
 // ##### Older Orions w/ATX had Y inverted and NEW PSU on orions needs opposite ###
 // 1 = ATX on older machines  2 = Rail style PSU on newer machines ############################
