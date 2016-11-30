@@ -1105,7 +1105,10 @@ void Commands::processGCode(GCode *com)
         Printer::homeAxis(true,true,true);
       }else{
         uint8_t p = (com->hasP() ? (uint8_t)com->P : 3);
-        Printer::runZProbe(p & 1,p & 2);
+        if(Printer::runZProbe(p & 1,p & 2) == -888) {
+          GCode::fatalError(PSTR("G29 leveling failed!"));
+          break;
+        }
         Printer::updateCurrentPosition(p & 1);
       }
     }
