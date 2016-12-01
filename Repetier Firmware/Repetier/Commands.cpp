@@ -1106,7 +1106,6 @@ void Commands::processGCode(GCode *com)
       }else{
         uint8_t p = (com->hasP() ? (uint8_t)com->P : 3);
         Printer::runZProbe(p & 1,p & 2);
-        Printer::updateCurrentPosition(p & 1);
       }
     }
     break;
