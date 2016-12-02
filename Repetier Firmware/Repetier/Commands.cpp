@@ -1105,11 +1105,11 @@ void Commands::processGCode(GCode *com)
         Printer::homeAxis(true,true,true);
       }else{
         uint8_t p = (com->hasP() ? (uint8_t)com->P : 3);
-#if ZPROBE_DEBUG_HIT
-        Com::printFLN(PSTR("Probe HIT at Z:"), (Z_PROBE_BED_DISTANCE - Printer::runZProbe(p & 1,p & 2)) );
-#else
-        Printer::runZProbe(p & 1,p & 2);
-#endif
+        String zoutput = "PROBE Z:";
+        zoutput = zoutput + (Z_PROBE_BED_DISTANCE - Printer::runZProbe(p & 1,p & 2));
+        char ztemp[15];
+        zoutput.toCharArray(ztemp, 15);
+        UI_STATUS_UPD_RAM(ztemp);
       }
     }
     break;
